@@ -1,0 +1,116 @@
+<div class="form w-100 m-auto mt-4">
+  <form
+    class="m-4 p-2 rounded flex flex-col gap-2 bg-slate-100"
+    [formGroup]="registerForm"
+    (ngSubmit)="submit()"
+  >
+    <div class="">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        id="name"
+        class="w-full rounded border-1 border-slate-400 p-1 pr-2 pl-2"
+        formControlName="name"
+      />
+
+      @if (registerForm.get('name')?.invalid &&
+      (registerForm.get('name')?.touched || registerForm.get('name')?.dirty)) {
+      @if (registerForm.get('name')?.errors?.['required']) {
+      <p class="text-md text-red-400 w-full">Must wite your name</p>
+      } }
+    </div>
+
+    <div class="">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        class="w-full rounded border-1 border-slate-400 p-1 pr-2 pl-2"
+        formControlName="email"
+      />
+    </div>
+    <div class="">
+      <label for="password">password</label>
+      <input
+        type="password"
+        id="password"
+        class="w-full rounded border-1 border-slate-400 p-1 pr-2 pl-2"
+        formControlName="password"
+      />
+    </div>
+    <div class="">
+      <label for="phone">Phone</label>
+      <input
+        type="number"
+        id="phone"
+        class="w-full rounded border-1 border-slate-400 p-1 pr-2 pl-2"
+        formControlName="phone"
+      />
+    </div>
+    <div class="">
+      <label for="date">Date</label>
+      <input
+        type="date"
+        id="date"
+        class="w-full rounded border-1 border-slate-400 p-1 pr-2 pl-2"
+        formControlName="date"
+      />
+    </div>
+    <div class="" formGroupName="address">
+      <div class="">
+        <label for="country">Country</label>
+        <select
+          name="country"
+          id="country"
+          class="w-full rounded border-1 border-slate-400 p-1 pr-2 pl-2"
+          formControlName="country"
+        >
+          <option value="1">Egypt</option>
+        </select>
+      </div>
+      <div class="">
+        <label for="city">City</label>
+        <select
+          name="city"
+          id="city"
+          formControlName="city"
+          class="w-full rounded border-1 border-slate-400 p-1 pr-2 pl-2"
+        >
+          <option value="1">Qena</option>
+        </select>
+      </div>
+    </div>
+    <div class="flex items-center">
+      <label for="accept">Accept</label>
+      <input
+        type="checkbox"
+        id="accept"
+        class="ml-2 mr-2 rounded border-1 border-slate-400 p-1 pr-2 pl-2"
+        formControlName="accept"
+      />
+    </div>
+    <div>
+      <button
+        type="button"
+        class="cursor-pointer bg-green-200 p-2 mb-2 rounded text-md"
+      >
+        Add Skills
+      </button>
+
+      <div>
+        <label for="skill">Skills</label>
+        <input
+          type="text"
+          id="skill"
+          class="w-full rounded border-1 border-slate-400 p-1 pr-2 pl-2"
+        />
+      </div>
+      <button
+        type="submit"
+        class="cursor-pointer mt-2 mb-2 w-full rounded border-1 bg-blue-200 border-slate-400 p-1 pr-2 pl-2"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+</div>

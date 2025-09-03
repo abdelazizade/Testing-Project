@@ -1,0 +1,8 @@
+<a
+  *ngFor="let post of posts$ | async"
+  class="cursor-pointer border w-100 bg-[#FFF5F2] text-[#064232] p-2 m-2 rounded"
+  [routerLink]="['detail/', post.id]"
+>
+  <h3 class="text-xl mb-2">{{ post.title }}</h3>
+  <p class="text-md">{{ post.body }}</p>
+</a>
