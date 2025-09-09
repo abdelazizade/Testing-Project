@@ -20,6 +20,8 @@ import { FetchDateInterceptor } from './services/interceptors/fetch-date';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    {provide: 'API_URL', useValue: 'https://jsonplaceholder.typicode.com/'},
+    // {},
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
     provideRouter(routes, withComponentInputBinding(), withViewTransitions()),

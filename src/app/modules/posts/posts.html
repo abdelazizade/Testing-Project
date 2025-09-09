@@ -1,4 +1,4 @@
-@for (post of posts; track $index) {
+@for (post of (posts$ | async); track $index) {
 <a
   class="cursor-pointer border w-100 bg-[#FFF5F2] text-[#064232] p-2 m-2 rounded"
   [routerLink]="['detail/', post.id]"

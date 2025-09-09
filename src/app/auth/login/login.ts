@@ -61,6 +61,13 @@ export class Login {
     const handleDate = this.datePipe.transform(date, 'dd/MM/yyyy');
 
     this.registerForm.patchValue({ date: handleDate });
+
+    // if(this.registerForm.val)
     console.log(this.registerForm.value);
+  }
+
+  isFormValid(){
+    console.log(!!this.registerForm.valid);
+    return !!this.registerForm.valid
   }
 }

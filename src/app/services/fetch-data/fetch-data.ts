@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { Inject, inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Ipost } from '../../models/interfaces/interface';
 
@@ -8,8 +8,7 @@ import { Ipost } from '../../models/interfaces/interface';
 })
 export class FetchDataClass {
   private http = inject(HttpClient);
-
-  private readonly url = 'https://jsonplaceholder.typicode.com/';
+  constructor(@Inject('API_URL') private url: string){}
 
   getData(category: string = 'posts'): any {
     return this.http.get(this.url + category);

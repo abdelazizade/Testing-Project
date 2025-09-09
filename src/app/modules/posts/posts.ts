@@ -11,9 +11,7 @@ import { RouterLink } from '@angular/router';
 })
 export class Posts {
   fetchData = inject(FetchDataClass);
-  // posts$ = this.fetchData.getData();
-  posts: any[] = [];
+  posts$ = this.fetchData.getData();
   ngOnInit() {
-    this.fetchData.getData().subscribe((data: any) => (this.posts = data));
   }
 }
