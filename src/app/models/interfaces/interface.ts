@@ -1,3 +1,4 @@
+import { Signal } from "@angular/core";
 import { Observable } from "rxjs";
 
 export interface Ipost {
@@ -7,6 +8,7 @@ export interface Ipost {
 }
 
 export interface IapiService {
+  isLoading: any;
   getData(): Observable<any>;
   getDataById(): Observable<Ipost>
 }

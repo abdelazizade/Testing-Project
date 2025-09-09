@@ -14,7 +14,6 @@ import { ActivatedRoute } from '@angular/router';
 export class PostDetails {
   activatedRoute = inject(ActivatedRoute);
   post$: Observable<any> = this.activatedRoute?.data;
-
   // ngOnInit() {
   //   console.log(this.activatedRoute?.data.subscribe((data: any)=> console.log(data?.product)
   //   ));

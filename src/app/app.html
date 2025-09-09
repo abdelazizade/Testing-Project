@@ -1,1 +1,11 @@
-<app-header /> <router-outlet />
+
+<p>{{fetchData.isLoading()}}</p>
+<app-header /> 
+@if (fetchData.isLoading()) {
+<div class="h-screen w-screen flex justify-center items-center bg-slate-300">
+    <app-spinner/>
+</div>
+} @else {
+    <router-outlet />
+} 
+<!-- <app-article-card/> -->
