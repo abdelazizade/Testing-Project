@@ -63,11 +63,11 @@ export class Login {
     this.registerForm.patchValue({ date: handleDate });
 
     // if(this.registerForm.val)
-    console.log(this.registerForm.value);
+    // console.log(this.registerForm.value);
   }
 
   isFormValid(){
-    console.log(!!this.registerForm.valid);
+    // console.log(!!this.registerForm.valid);
     return !!this.registerForm.valid
   }
 }

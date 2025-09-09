@@ -6,7 +6,7 @@ export const ProductDetailsResolver: ResolveFn<any> = (route: ActivatedRouteSnap
     const fetchData = inject(FetchDataClass)
 
         const id = route.paramMap.get('id');
-        console.log('from Resolver');
+        // console.log('from Resolver');
         
         return fetchData.getDataById('posts/', id);
     

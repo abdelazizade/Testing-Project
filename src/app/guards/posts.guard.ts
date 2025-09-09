@@ -6,5 +6,5 @@ export const postsGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: 
 }
 
 export const postsMatchGuard: CanMatchFn = (route: Route, segments: UrlSegment[]) => {
-    return of(false)
+    return of(true)
 }

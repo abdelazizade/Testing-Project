@@ -6,7 +6,7 @@ export interface Ipost {
   body: string;
 }
 
-export interface IapiRepo {
-  getData(): Observable<any>
-  getDataById(): Observable<any>
+export interface IapiService {
+  getData(): Observable<any>;
+  getDataById(): Observable<Ipost>
 }

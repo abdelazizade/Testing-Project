@@ -11,12 +11,12 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './post-details.html',
   styleUrl: './post-details.scss',
 })
-export class PostDetails implements OnInit {
+export class PostDetails {
   activatedRoute = inject(ActivatedRoute);
   post$: Observable<any> = this.activatedRoute?.data;
 
-  ngOnInit() {
-    console.log(this.activatedRoute?.data.subscribe((data: any)=> console.log(data?.product)
-    ));
-  }
+  // ngOnInit() {
+  //   console.log(this.activatedRoute?.data.subscribe((data: any)=> console.log(data?.product)
+  //   ));
+  // }
 }
