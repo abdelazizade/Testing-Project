@@ -8,15 +8,7 @@ import { RouterModule } from '@angular/router';
   styleUrl: './header.scss',
 })
 export class Header {
-  private ngZone = inject(NgZone);
   hallo = 'Hello';
 
-  ngOnInit() {
-    this.ngZone.runOutsideAngular(() => {
-      setTimeout(() => {
-        console.log('runOutsideAngular');
-        this.hallo = 'Welcome';
-      }, 30);
-    });
-  }
+  ngOnInit() {}
 }

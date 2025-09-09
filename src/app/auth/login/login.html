@@ -1,4 +1,4 @@
-<div class="form w-100 m-auto mt-4">
+<!-- <div class="form w-100 m-auto mt-4">
   <form
     class="m-4 p-2 rounded flex flex-col gap-2 bg-slate-100"
     [formGroup]="registerForm"
@@ -113,4 +113,198 @@
       </button>
     </div>
   </form>
-</div>
+</div> -->
+
+<!-- ///////////////////// -->
+
+<form
+  [formGroup]="registerForm"
+  (ngSubmit)="submitForm()"
+  class="w-100 m-auto m-2"
+>
+  <div class="m-2 flex flex-col">
+    <label for="name" class="text-xl">Name</label>
+    <input
+      type="text"
+      id="name"
+      class="rounded border-1 border-slate-400 p-1 pr-2 pl-2"
+      formControlName="name"
+      [ngClass]="{
+        'border-red-500 bg-red-50':
+          getError('name')?.invalid &&
+          (getError('name')?.dirty || getError('name')?.touched),
+        'border-slate-400':
+          getError('name')?.valid || !getError('name')?.touched
+      }"
+    />
+
+    @if (registerForm.get('name')?.invalid && (registerForm.get('name')?.touched
+    || registerForm.get('name')?.dirty)) { @if
+    (registerForm.get('name')?.errors?.['required']) {
+    <span class="text-red-500 text-md">You Must Write Your Name</span>
+    } @if (registerForm.get('name')?.errors?.['nameValidator']) {
+    <span class="text-red-500 text-md"
+      >must your name ( {{getError('name')?.errors?.['nameValidator']?.value}} )
+      not be Abdelaziz</span
+    >
+    } }
+  </div>
+  <div class="m-2 flex flex-col">
+    <label for="phone" class="text-xl">phone</label>
+    <input
+      type="number"
+      id="phone"
+      class="rounded border p-1 pr-2 pl-2"
+      formControlName="phone"
+      [ngClass]="{
+        'border-red-500 bg-red-50':
+          getError('phone')?.invalid &&
+          (getError('phone')?.touched || getError('phone')?.dirty),
+        'border-slate-400':
+          getError('name')?.valid || !getError('name')?.touched
+      }"
+    />
+
+    @if (getError('phone')?.invalid && ( getError('phone')?.touched ||
+    getError('phone')?.dirty)) { @if (getError('phone')?.errors?.['required']) {
+
+    <span class="text-red-500 text-md">You Must Write Your phone</span>
+    } }
+  </div>
+
+  <div class="m-2 flex flex-col">
+    <label for="email" class="text-xl">email</label>
+    <input
+      type="email"
+      id="email"
+      class="rounded border p-1 pr-2 pl-2"
+      formControlName="email"
+      [ngClass]="{
+        'border-red-400 bg-red-50':
+          getError('email')?.invalid &&
+          (getError('email')?.touched || getError('email')?.dirty),
+        'border-slate-400 ':
+          getError('email')?.valid || !getError('email')?.touched
+      }"
+    />
+
+    @if (getError('email')?.invalid && ( getError('email')?.touched ||
+    getError('email')?.dirty)) { @if (getError('email')?.errors?.['required']) {
+
+    <span class="text-red-500 text-md">You Must Write Your Email</span>
+    } @else if (getError('email')?.errors?.['emailValidator']) {
+    <span class="text-red-500 text-md"
+      >You Must Write Valid Email like test@example.com</span
+    >
+    } }
+  </div>
+
+  <div class="m-2 flex flex-col">
+    <label for="password" class="text-xl">password</label>
+    <input
+      type="password"
+      id="password"
+      class="rounded border-1 border-slate-400 p-1 pr-2 pl-2"
+      formControlName="password"
+    />
+    @if (getError('password')?.invalid && ( getError('password')?.touched ||
+    getError('password')?.dirty)) { @if
+    (getError('password')?.errors?.['required']) {
+    <span class="text-red-500 text-md">You Must Write Your Password</span>
+    } @if (getError('password')?.errors?.['passwordValidator']) {
+    <span class="text-red-500 text-md"
+      >Password must have at least one number, uppercase, lowercase and
+      symbol</span
+    >
+
+    } }
+  </div>
+
+  <div class="m-2 flex flex-col">
+    <label for="password" class="text-xl">date</label>
+    <input
+      type="date"
+      id="date"
+      class="rounded border p-1 pr-2 pl-2"
+      formControlName="date"
+      [ngClass]="{
+        'border-red-500 bg-red-50':
+          getError('date')?.invalid &&
+          (getError('date')?.touched || getError('date')?.dirty),
+        'border-slate-400':
+          getError('date')?.valid || !getError('date')?.touched
+      }"
+    />
+  </div>
+
+  <div class="m-2" formGroupName="address">
+    <p class="text-xl">Address</p>
+    <div class="m-3 mt-0 flex flex-col">
+      <label for="country" class="text-md">country</label>
+      <input
+        type="text"
+        id="country"
+        class="rounded border-1 border-slate-400 p-1 pr-2 pl-2"
+        formControlName="country"
+      />
+    </div>
+    <div class="m-3 mt-0 flex flex-col">
+      <label for="city" class="text-md">city</label>
+
+      <select
+        type="text"
+        id="city"
+        class="rounded border p-1 pr-2 pl-2"
+        formControlName="city"
+        [ngClass]="{
+          'border-red-500 bg-red-50':
+            getError('address.city')?.invalid &&
+            (getError('address.city')?.dirty ||
+              getError('address.city')?.touched),
+          'border-slate-400':
+            getError('address.city')?.valid ||
+            !getError('address.city')?.touched
+        }"
+      >
+        <option value="1">Cairo</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="m-2 flex flex-col" formArrayName="skills">
+    <label for="skills" class="text-xl">skills</label>
+    <button
+      class="bg-green-200 rounded p-2 text-xl mb-2 text-balck cursor-pointer"
+      (click)="addSkill()"
+    >
+      Add Skill
+    </button>
+    @for (skill of getskills.controls; track $index; let i = $index) {
+    <label for="skills" class="text-xl">{{ i }}</label>
+
+    <input
+      type="text"
+      id="skills"
+      class="rounded border-1 p-1 pr-2 pl-2"
+      [formControlName]="i"
+      [ngClass]="{
+        'border-red-500 bg-red-50':
+          skill.invalid && (skill.touched || skill.dirty),
+        'border-slate-400': skill.valid || !skill.touched
+      }"
+    />
+    @if(getErrorSkill(i)?.invalid && (getErrorSkill(i)?.touched ||
+    getErrorSkill(i )?.dirty)){ @if(getErrorSkill(i)?.errors?.['required']){
+    <span class="text-red-500 text-md">You Must Write Your Skill</span>
+
+    } } }
+  </div>
+  <div class="m-2 flex flex-col">
+    <button
+      class="bg-blue-200 rounded p-2 text-xl text-b mb-2 text-balck cursor-pointer"
+      type="submit"
+    >
+      Submit
+    </button>
+  </div>
+</form>

@@ -2,7 +2,7 @@ import { Component, inject, input, OnInit } from '@angular/core';
 import { FetchDataClass } from '../../services/fetch-data/fetch-data';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
-import { Ipost } from '../../interfaces/interface';
+import { Ipost } from '../../models/interfaces/interface';
 
 @Component({
   selector: 'app-post-details',
