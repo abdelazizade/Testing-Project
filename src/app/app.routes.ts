@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
-import { Home } from './components/home/home';
-import { About } from './components/about/about';
-import { Service } from './components/service/service';
-import { PageNotFound } from './components/page-not-found/page-not-found';
-import { Posts } from './components/posts/posts';
-import { PostDetails } from './components/post-details/post-details';
+import { Home } from './modules/home/home';
+import { About } from './modules/about/about';
+import { Service } from './modules/service/service';
+import { PageNotFound } from './shared/page-not-found/page-not-found';
+import { Posts } from './modules/posts/posts';
+import { PostDetails } from './modules/post-details/post-details';
 import { Login } from './auth/login/login';
 
 export const routes: Routes = [

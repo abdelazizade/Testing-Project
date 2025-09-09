@@ -1,51 +1,66 @@
+import { CommonModule, DatePipe, NgClass } from '@angular/common';
 import { Component, inject, NgZone } from '@angular/core';
 import {
+  FormArray,
   FormBuilder,
+  FormControl,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { nameValidator } from '../customValidators/name';
+import { passwordValidator } from '../customValidators/password';
+import { emailValidator } from '../customValidators/email';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, NgClass],
   templateUrl: './login.html',
   styleUrl: './login.scss',
+  providers: [DatePipe],
 })
 export class Login {
   fb: FormBuilder = inject(FormBuilder);
+  datePipe = inject(DatePipe);
 
-  registerForm: FormGroup = this.initForm();
+  registerForm = this.initForm();
 
-  ngOnInit() {}
-
-  initForm(): FormGroup {
+  initForm() {
     return this.fb.group({
-      name: ['', Validators.required, Validators.minLength(3)],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
-      phone: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(11),
-          Validators.maxLength(11),
-        ],
-      ],
-      date: [''],
+      name: ['', [Validators.required, nameValidator()]],
+      phone: ['', Validators.required],
+      email: ['', [Validators.required, emailValidator()]],
+      password: ['', [Validators.required], [passwordValidator()]],
+      date: ['', Validators.required],
       address: this.fb.group({
         country: [''],
-        city: [''],
+        city: ['', Validators.required],
       }),
-      skills: this.fb.array([this.fb.control('football')]),
-      accept: [''],
+      skills: this.fb.array([this.fb.control('', Validators.required)]),
     });
   }
 
-  submit() {
-    if (this.registerForm.invalid) {
-      this.registerForm.markAllAsTouched();
-    }
+  getError(control: string) {
+    return this.registerForm.get(control);
+  }
+
+  getErrorSkill(index: number) {
+    return this.getskills.at(+index) as FormControl | null;
+  }
+
+  get getskills() {
+    return this.registerForm.get('skills') as FormArray;
+  }
+
+  addSkill() {
+    this.getskills.push(this.fb.control('', Validators.required));
+  }
+
+  submitForm() {
+    const date = this.registerForm.get('date')?.value;
+    const handleDate = this.datePipe.transform(date, 'dd/MM/yyyy');
+
+    this.registerForm.patchValue({ date: handleDate });
     console.log(this.registerForm.value);
   }
 }
