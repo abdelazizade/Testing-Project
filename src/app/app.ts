@@ -6,10 +6,11 @@ import { ArticleCardComponent } from "./shared/article-card/article-card";
 import { SpinnerComponent } from "./shared/spinner/spinner";
 import { FetchDataClass } from './services/fetch-data/fetch-data';
 import { IapiService } from './models/interfaces/interface';
+import { Card } from "./card/card";
 
 @Component({
   selector: 'app-root',
-  imports: [Header, RouterOutlet, SpinnerComponent],
+  imports: [ Card],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })

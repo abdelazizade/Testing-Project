@@ -1,0 +1,35 @@
+.card{
+    max-width: 374px;
+    max-height: 188px;
+    font-family: Roboto;
+    .content{
+        .header{ 
+            font-family: Inter;
+            font-weight: 600;
+            font-size: 18px;
+            color: #7B809A;
+
+        }
+        .counter{
+            font-weight: 700;
+            font-size: 30px;
+            color: #344767;
+        }
+    }
+
+    .line{
+        height: 1.5px;
+        background: #F0F2F5;
+        margin: 16px 0;
+    }
+
+    .footer{
+        font-size: 16px;
+        font-weight: 300;
+        color: #7B809A;
+        .percentage{
+            font-weight: 700;
+            color: #4CAF50;
+        }
+    }
+}
