@@ -1,0 +1,18 @@
+<mat-card class="card rounded border  m-2">
+    <mat-card-content class=" content d-flex justify-content-between">
+        <div>
+            icon
+        </div>
+        <div class="text-end">
+            <h6 class="header">Total Patients</h6>
+            <span class="counter">281</span>
+        </div>
+
+    </mat-card-content>
+
+    <div class="line"></div>
+    
+    <mat-card-footer class="footer ms-3 me-3">
+        <p> <span class="percentage" [ngStyle]="{'color': percentage ? 'green' :'red'}">+55%</span> than last week</p>
+    </mat-card-footer>
+</mat-card>
